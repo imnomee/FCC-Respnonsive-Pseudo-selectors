@@ -1,3 +1,192 @@
 html {
     box-sizing: border-box;
 }
+
+body {
+    font-family: sans-serif;
+    color: #0a0a23;
+}
+/* Before you get too far into your styling,
+you should make use of the sr-only class.
+You can use CSS to make elements with this class
+completely hidden from the visual page,
+but still be announced by screen readers.
+
+The CSS you are about to write is a common set of properties
+used to ensure elements are completely hidden visually.
+we clip the element.
+hide the overflow
+whitespace to no wrap
+width and height to min
+*/
+
+span[class~='sr-only'] {
+    border: 0 !important;
+    /* clip is deprecated, now clip-path is active */
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    /* a position property set to absolute,
+    a padding property set to 0,
+    and a margin property set to -1px.
+    This will ensure that not only are they no longer visible,
+    but they are not even within the page view. */
+    position: absolute !important;
+    padding: 0 !important;
+    margin: -1px !important;
+}
+
+h1 {
+    margin: 0 auto;
+    max-width: 37.25rem;
+    padding: 1.5rem 1.25rem;
+}
+h1 .flex {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+}
+
+/* The :first-of-type pseudo-selector is used
+to target the first element that matches the selector.  */
+h1 .flex span:first-of-type {
+    font-size: 0.7em;
+}
+
+/* The :last-of-type pseudo-selector does the exact opposite
+it targets the last element that matches the selector. */
+h1 .flex span:last-of-type {
+    font-size: 1.2em;
+}
+
+section {
+    border: 2px solid #d0d0d5;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+#years {
+    display: flex;
+    justify-content: flex-end;
+    /* Adding position sticky moved the element into its own stack.
+    To ensure your #years element does not get hidden by different stacks,
+    add a z-index property set to 999  */
+    position: sticky;
+    top: 0;
+    background-color: #0a0a23;
+    color: #fff;
+    margin: 0 -2px;
+    padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0;
+    z-index: 999;
+}
+
+/* The span[class] syntax will target any span element
+that has a class attribute set, regardless of the attribute's value. */
+
+#years span[class] {
+    font-weight: bold;
+    width: 4.5rem;
+    text-align: right;
+}
+
+.table-wrap {
+    padding: 0 0.75rem 1.5rem 0.75rem;
+}
+/* The :not() pseudo-selector is used to target
+all elements that do not match the selector  */
+/* span:not(.sr-only) {
+    font-weight: normal;
+} */
+
+table {
+    border-collapse: collapse;
+    border: 0;
+    width: 100%;
+    position: relative;
+    margin-top: 3rem;
+}
+
+table caption {
+    color: #356eaf;
+    font-size: 1.3em;
+    font-weight: normal;
+    position: absolute;
+    top: -2.25rem;
+    left: 0.5rem;
+}
+
+tbody td {
+    min-width: 4rem;
+    max-width: 4rem;
+    width: 100vw;
+}
+
+tbody th {
+    width: calc(100% - 12rem);
+}
+
+tr[class='total'] {
+    border-bottom: 4px double #0a0a23;
+    font-weight: bold;
+}
+
+tr[class='total'] th {
+    text-align: left;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+}
+
+tr.total td {
+    text-align: right;
+    padding: 0 0.25rem;
+}
+
+/* The :nth-of-type() pseudo-selector is used
+to target specific elements based on
+their order among siblings of the same type. */
+
+tr.total td:nth-of-type(3) {
+    padding-right: 0.5rem;
+}
+
+tr.total:hover {
+    background-color: #99c9ff;
+}
+
+td[class='current'] {
+    font-style: italic;
+}
+
+tr[class='data'] {
+    background-image: linear-gradient(
+        to bottom,
+        #dfdfe2 1.845rem,
+        white 1.845rem
+    );
+}
+
+tr.data th {
+    text-align: left;
+    padding-top: 0.3rem;
+    padding-left: 0.5rem;
+}
+
+tr.data th .description {
+    display: block;
+    font-style: italic;
+    font-weight: normal;
+    padding: 1rem 0 0.75rem;
+    margin-right: -13.5rem;
+}
+
+tr.data td {
+    vertical-align: top;
+    text-align: right;
+    padding: 0.3rem 0.25rem 0;
+}
+
+tr.data td:last-of-type {
+    padding-right: 0.5rem;
+}
